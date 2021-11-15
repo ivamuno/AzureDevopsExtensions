@@ -1,0 +1,43 @@
+{
+  "name": "ivamuno-azure-boards",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "package": "npm install && npm run compile",
+    "deploy-instances": "npm run compile && node .\\widgets\\WidgetBuilder\\instanceExecuter.js",
+    "clean": "rimraf ./dist",
+    "compile": "npm run clean && npm run tscextensions &&  webpack --mode production",
+    "compile:dev": "npm run clean && webpack --mode development",
+    "tscextensions": "cd ./widgets/WidgetBuilder && tsc -p ."
+  },
+  "dependencies": {
+    "@types/node": "^8.0.7",
+    "@types/q": "1.5.0",
+    "azure-devops-node-api": "^9.0.1",
+    "fs": "0.0.1-security",
+    "tfx-cli": "^0.7.8",
+    "typescript": "^3.6.2",
+    "azure-devops-extension-api": "~1.157.0",
+    "azure-devops-extension-sdk": "~2.0.11",
+    "azure-devops-ui": "~2.164.0",
+    "react": "~16.8.1",
+    "react-dom": "~16.8.1"
+  },
+  "devDependencies": {
+    "@types/react": "~16.8.2",
+    "@types/react-dom": "~16.8.0",
+    "base64-inline-loader": "^1.1.1",
+    "copy-webpack-plugin": "^4.5.4",
+    "css-loader": "~1.0.0",
+    "file-loader": "~2.0.0",
+    "node-sass": "~4.12.0",
+    "rimraf": "~2.6.2",
+    "sass-loader": "~7.1.0",
+    "style-loader": "~0.23.1",
+    "tfx-cli": "^0.6.3",
+    "ts-loader": "~5.2.2",
+    "typescript": "^2.9.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}

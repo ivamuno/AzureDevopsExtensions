@@ -1,0 +1,24 @@
+{
+  "name": "work-item-updater",
+  "version": "1.0.0",
+  "description": "Update WorkItem fields.",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "package": "npm run clean && npm i && npm run build && npm run copy-task-files && npm run package:modules",
+    "package:modules": "copyfiles package.json dist/ && cd dist/ && npm i --production",
+    "copy-task-files": "copyfiles icon.png task.json dist/"
+  },
+  "dependencies": {
+    "azure-devops-node-api": "^11.0.1",
+    "azure-pipelines-task-lib": "^3.1.9",
+    "typed-rest-client": "^1.8.6",
+    "typescript-collections": "^1.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.13",
+    "@types/q": "^1.5.5",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2"
+  }
+}

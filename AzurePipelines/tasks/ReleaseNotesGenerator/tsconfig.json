@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "target": "es6",
+        "alwaysStrict": true,
+        "skipLibCheck": true,
+        "module": "commonjs",
+        "declaration": true        
+    },
+    "exclude": [
+      "node_modules",
+      "tasks/*/node_modules"
+  ]
+}

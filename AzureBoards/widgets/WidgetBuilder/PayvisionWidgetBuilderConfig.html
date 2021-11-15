@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<script src="lib/vss-web-extension-sdk/VSS.SDK.min.js"></script>
+	<script type="text/javascript">
+		VSS.init({
+			explicitNotifyLoaded: true,
+			usePlatformStyles: true
+		});
+
+		VSS.require("TFS/Dashboards/WidgetHelpers", function (WidgetHelpers) {
+			VSS.register("WidgetBuilderConfiguration", function () {
+				var $javascriptText = $("#javascriptText");
+
+				return {
+					load: function (widgetSettings, widgetConfigurationContext) {
+						var data = JSON.parse(widgetSettings.customSettings.data);
+						if (data) {
+							$javascriptText.val(data.code);
+						}
+
+						$javascriptText.keyup(function (e) {
+							var code = e.keyCode ? e.keyCode : e.which;
+							if (code == 13) {
+								var customSettings = {
+									data: JSON.stringify({
+										code: $javascriptText.val()
+									})
+								};
+								var eventName = WidgetHelpers.WidgetEvent.ConfigurationChange;
+								var eventArgs = WidgetHelpers.WidgetEvent.Args(customSettings);
+								widgetConfigurationContext.notify(eventName, eventArgs);
+							}
+						});
+
+						return WidgetHelpers.WidgetStatusHelper.Success();
+					},
+					onSave: function () {
+						var customSettings = {
+							data: JSON.stringify({
+								code: $javascriptText.val()
+							})
+						};
+						return WidgetHelpers.WidgetConfigurationSave.Valid(customSettings);
+					}
+				}
+			});
+			VSS.notifyLoadSucceeded();
+		});
+	</script>
+</head>
+
+<body style="width:100%; height:100%; float:left;">
+	<div class="container" style="width:100%; height:100%; float:left;">
+		<textarea id="javascriptText" style="width:100%; height:140px; float:left;"></textarea>
+	</div>
+</body>
+
+</html>

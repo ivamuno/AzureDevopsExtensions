@@ -1,0 +1,24 @@
+{
+  "name": "task",
+  "version": "2.0.0",
+  "description": "package.json for task lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@ivamuno-devops/approvers-list-repository": "^1.1.0",
+    "@ivamuno-devops/tollgates-queues-repository": "0.0.4",
+    "@types/dateformat": "^3.0.0",
+    "@types/node": "^8.0.7",
+    "@types/q": "1.5.0",
+    "add-subtract-date": "^1.0.14",
+    "atob": "^2.1.2",
+    "azure-devops-node-api": "^9.0.1",
+    "dateformat": "^3.0.3",
+    "fs": "0.0.1-security",
+    "markdown-it": "^9.0.1",
+    "typed-rest-client": "^1.5.0",
+    "typescript-collections": "^1.3.2",
+    "vsts-task-lib": "^2.0.5"
+  }
+}

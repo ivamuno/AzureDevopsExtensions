@@ -1,0 +1,90 @@
+{
+  "manifestVersion": 1,
+  "id": "ivamuno-azure-pipelines",
+  "version": "1.1.8",
+  "name": "[IVAMUNO] Azure Pipelines",
+  "description": "Set of tasks to be used in Azure DevOps pipelines.",
+  "publisher": "Ivamuno",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "scopes": [
+    "vso.wiki_write",
+    "vso.work_write"
+  ],
+  "public": false,
+  "icons": {
+    "default": "img/icon.png"
+  },
+  "tags": [
+    "DevOps",
+    "State",
+    "Release",
+    "Release task"
+  ],
+  "links": {},
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "branding": {
+    "color": "rgb(141, 141, 141)",
+    "theme": "light"
+  },
+  "files": [
+    {
+      "path": "img",
+      "addressable": true
+    },
+    {
+      "path": "tasks/PtafOnDocker/dist",
+      "packagePath": "tasks/PtafOnDocker"
+    },
+    {
+      "path": "tasks/WorkItemUpdater/dist",
+      "packagePath": "tasks/WorkItemUpdater"
+    },
+    {
+      "path": "tasks/SonarTeamSetter/dist",
+      "packagePath": "tasks/SonarTeamSetter"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "d93cc034-29e4-4bae-bb99-28ee0d2033af",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/PtafOnDocker"
+      }
+    },
+    {
+      "id": "977b0ff7-92e2-4944-a300-fcc92cf5a6c8",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/WorkItemUpdater"
+      }
+    },
+    {
+      "id": "27fff175-f984-41c2-acd6-1e1de269ea68",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/SonarTeamSetter"
+      }
+    }
+  ]
+}

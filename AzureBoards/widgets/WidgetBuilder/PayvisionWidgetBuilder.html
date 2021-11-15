@@ -1,0 +1,56 @@
+<html>
+
+<head>
+	<script src="lib/vss-web-extension-sdk/VSS.SDK.min.js"></script>
+	<script src="lib/chartjs/Chart.bundle.js"></script>
+	<script src="lib/chartjs/utils.js"></script>
+	<script src="lib/date.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/VSS.Controls.css">
+	</script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="widget">
+		<h2 class="title"></h2>
+		<div id="mainContainer" style="float:left; height: 90%;width: 100%;">
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	VSS.init({
+		explicitNotifyLoaded: true
+	});
+	
+	VSS.require("TFS/Dashboards/WidgetHelpers", function (WidgetHelpers) {
+		VSS.register("WidgetBuilder", function () {
+			var getQueryInfo = function (widgetSettings) {
+				if(widgetSettings.customSettings.data){
+					eval(JSON.parse(widgetSettings.customSettings.data).code);
+					var $title = $('h2.title');
+					$title.text(widgetSettings.name);
+				}
+				return WidgetHelpers.WidgetStatusHelper.Success();
+			}
+			
+			return {
+				load: function (widgetSettings) {
+					return getQueryInfo(widgetSettings);
+				},
+				reload: function (widgetSettings) {
+					return getQueryInfo(widgetSettings);
+				}
+			}
+		});
+		
+		VSS.notifyLoadSucceeded();
+	});
+</script>
+
+</html>

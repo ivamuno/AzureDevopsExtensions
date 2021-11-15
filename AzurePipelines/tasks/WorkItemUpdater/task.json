@@ -1,0 +1,66 @@
+﻿{
+  "id": "977b0ff7-92e2-4944-a300-fcc92cf5a6c8",
+  "name": "WorkItemUpdater",
+  "friendlyName": "[Ivamuno] Work item updater",
+  "description": "Update WorkItem fields.",
+  "author": "Ivan Muñoz Mozo (i.munoz)",
+  "helpMarkDown": "",
+  "category": "Azure Pipelines",
+  "visibility": [
+    "Azure Pipelines"
+  ],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "1"
+  },
+  "demands": [],
+  "minimumAgentVersion": "1.91.0",
+  "instanceNameFormat": "[Ivamuno] WorkItemUpdater",
+  "groups": [],
+  "inputs": [
+    {
+      "name": "workItemType",
+      "type": "pickList",
+      "label": "WorkItem Type",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The type of work items to update",
+      "properties": {
+        "DisableManageLink": "True",
+        "EditableOptions": "False",
+        "MultiSelectFlatList": "True"
+      }
+    },
+    {
+      "name": "workItemState",
+      "type": "pickList",
+      "label": "WorkItem State",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The state to update the work items to",
+      "properties": {
+        "DisableManageLink": "True"
+      }
+    }
+  ],
+  "sourceDefinitions": [
+    {
+      "target": "workItemType",
+      "endpoint": "/$(system.teamProject)/_apis/wit/workItemTypes?api-version=1.0",
+      "selector": "jsonpath:$.value[*].name",
+      "authKey": "tfs:teamfoundation"
+    },
+    {
+      "target": "workItemState",
+      "endpoint": "/$(system.teamProject)/_api/_wit/allowedValues?__v=5&fieldId=2",
+      "selector": "jsonpath:$.__wrappedArray[*]",
+      "authKey": "tfs:teamfoundation"
+    }
+  ],
+  "execution": {
+    "Node10": {
+      "target": "index.js"
+    }
+  }
+}

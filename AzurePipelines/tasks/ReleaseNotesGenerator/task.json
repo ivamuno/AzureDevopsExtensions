@@ -1,0 +1,60 @@
+﻿{
+    "id": "ef74af9f-ddf8-4470-96ee-216e6a0d152b",
+    "name": "[Ivamuno] ReleaseNotesGenerator",
+    "friendlyName": "[Ivamuno] ReleaseNotesGenerator",
+    "description": "Generate release notes as part of a azure devops Release pipeline.",
+    "author": "Ivan Muñoz Mozo (i.munoz)",
+    "helpMarkDown": "",
+    "category": "Azure Pipelines",
+    "visibility": [
+        "Azure Pipelines"
+    ],
+    "version": {
+        "Major": "2",
+        "Minor": "4",
+        "Patch": "5"
+    },
+    "demands": [],
+    "minimumAgentVersion": "1.91.0",
+    "instanceNameFormat": "[Ivamuno] ReleaseNotesGenerator",
+    "groups": [],
+    "inputs": [
+        {
+            "name": "wikiProjectId",
+            "type": "string",
+            "label": "Wiki Project",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Project Id or project name where wiki is."
+        },
+        {
+            "name": "wikiIdentifier",
+            "type": "string",
+            "label": "Wiki Identifier",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Wiki id or name."
+        },
+        {
+            "name": "wikiRootPath",
+            "type": "string",
+            "label": "Wiki Root Path",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Wiki page root path."
+        },
+        {
+            "name": "ivamunoPAT",
+            "type": "string",
+            "label": "PAT endpoint",
+            "required": true,
+            "helpMarkDown": "PAT endpoint"
+        }
+    ],
+    "sourceDefinitions": [],
+    "execution": {
+        "Node": {
+            "target": "ReleaseNotesGenerator.js"
+        }
+    }
+}
